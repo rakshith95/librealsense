@@ -104,7 +104,6 @@ int main( int argc, char** argv ) try
     char input;
 
     int i=1;
-//    auto t_now = std::chrono::high_resolution_clock::now();
     do {
     
        rs2::frameset frames = pipe.wait_for_frames();
@@ -133,11 +132,11 @@ int main( int argc, char** argv ) try
 	//Disable IR emitter
 	sensor.set_option(RS2_OPTION_EMITTER_ENABLED, 0.f);	
 
-	//POssibly turn off laser if present. Verify presence
+	//Possibly turn off laser if present. Verify presence
 	if (sensor.supports(RS2_OPTION_LASER_POWER))
  	 {
 	  auto range = sensor.get_option_range(RS2_OPTION_LASER_POWER);
-//	  sensor.set_option(RS2_OPTION_LASER_POWER, range.max); // Enable laser at max power
+//	  sensor.set_option(RS2_OPTION_LASER_POWER, range.max); //Uncomment to Enable laser at max power and comment next line.
 	  sensor.set_option(RS2_OPTION_LASER_POWER, 0.f); // Disable laser
 
          }//
